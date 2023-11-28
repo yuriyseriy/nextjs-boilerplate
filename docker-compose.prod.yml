@@ -7,14 +7,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    env_file:
+      - .env.prod
     environment:
-      - "DATABASE_URL=postgresql://postgres:boilerplate@db:5432/boilerplate?schema=public"
-      - "NEXTAUTH_URL=http://localhost:3000"
-      - "NEXTAUTH_SECRET=nextsecret"
-      - "NEXT_PUBLIC_URL=http://localhost:3000"
-      - "NEXT_SITE_NAME=NextJS Boilerplate"
-      - "NEXT_SITE_EMAIL=admin@songlist.dev"
-      - "RESEND_API_KEY=00000"
+      - DATABASE_URL=${DATABASE_URL}
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - NEXT_PUBLIC_URL=${NEXT_PUBLIC_URL}
+      - NEXT_SITE_NAME=${NEXT_SITE_NAME}
+      - NEXT_SITE_EMAIL=${NEXT_SITE_EMAIL}
+      - RESEND_API_KEY=${RESEND_API_KEY}
     ports:
       - "3000:3000"
     depends_on:
